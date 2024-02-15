@@ -1,9 +1,6 @@
 package com.example.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import org.hibernate.annotations.NaturalId;
 
 import java.time.LocalDate;
@@ -12,31 +9,34 @@ import java.time.LocalDate;
 public class Avion {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long n_registro;
+	@Column(name = "n_registro")
+	private Long nRegistro;
 
 	@NaturalId
 	private String matricula;
 
-	private LocalDate fecha_reg;
+	@Column(name = "fecha_reg")
+	private LocalDate fechaReg;
 
-	private LocalDate fecha_construccion;
+	@Column(name = "fecha_construccion")
+	private LocalDate fechaConstruccion;
 
 	public Avion(){
 	}
 
-	public Avion(Long n_registro, String matricula, LocalDate fecha_reg, LocalDate fecha_construccion) {
-		this.n_registro = n_registro;
+	public Avion(Long nRegistro, String matricula, LocalDate fechaReg, LocalDate fechaConstruccion) {
+		this.nRegistro = nRegistro;
 		this.matricula = matricula;
-		this.fecha_reg = fecha_reg;
-		this.fecha_construccion = fecha_construccion;
+		this.fechaReg = fechaReg;
+		this.fechaConstruccion = fechaConstruccion;
 	}
 
-	public Long getN_registro() {
-		return n_registro;
+	public Long getnRegistro() {
+		return nRegistro;
 	}
 
-	public void setN_registro(Long n_registro) {
-		this.n_registro = n_registro;
+	public void setnRegistro(Long nRegistro) {
+		this.nRegistro = nRegistro;
 	}
 
 	public String getMatricula() {
@@ -47,29 +47,29 @@ public class Avion {
 		this.matricula = matricula;
 	}
 
-	public LocalDate getFecha_reg() {
-		return fecha_reg;
+	public LocalDate getFechaReg() {
+		return fechaReg;
 	}
 
-	public void setFecha_reg(LocalDate fecha_reg) {
-		this.fecha_reg = fecha_reg;
+	public void setFechaReg(LocalDate fechaReg) {
+		this.fechaReg = fechaReg;
 	}
 
-	public LocalDate getFecha_construccion() {
-		return fecha_construccion;
+	public LocalDate getFechaConstruccion() {
+		return fechaConstruccion;
 	}
 
-	public void setFecha_construccion(LocalDate fecha_construccion) {
-		this.fecha_construccion = fecha_construccion;
+	public void setFechaConstruccion(LocalDate fechaConstruccion) {
+		this.fechaConstruccion = fechaConstruccion;
 	}
 
 	@Override
 	public String toString() {
 		return "Avion{" +
-				"n_registro=" + n_registro +
+				"nRegistro=" + nRegistro +
 				", matricula='" + matricula + '\'' +
-				", fecha_reg=" + fecha_reg +
-				", fecha_construccion=" + fecha_construccion +
+				", fechaReg=" + fechaReg +
+				", fechaConstruccion=" + fechaConstruccion +
 				'}';
 	}
 }
