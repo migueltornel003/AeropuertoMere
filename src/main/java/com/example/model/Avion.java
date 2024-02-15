@@ -11,7 +11,6 @@ public class Avion {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "n_registro")
 	private Long nRegistro;
-
 	@NaturalId
 	private String matricula;
 
