@@ -1,12 +1,10 @@
 package com.example.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Inheritance;
-import jakarta.persistence.InheritanceType;
+import jakarta.persistence.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "personas")
 public class Persona {
 	@Id
 	private Long nss;

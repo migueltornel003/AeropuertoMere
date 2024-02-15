@@ -1,10 +1,13 @@
 package com.example.model;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import org.hibernate.annotations.NaturalId;
 
+@Entity
+@Table(name = "pilotos")
 public class Piloto extends Persona{
-
 	@NaturalId
 	@Column(name = "n_lic")
 	private Integer nLic;

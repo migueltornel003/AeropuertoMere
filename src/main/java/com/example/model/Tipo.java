@@ -1,42 +1,39 @@
 package com.example.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "tipos")
 public class Tipo {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long modelo;
+	private String modelo;
 
-	private String capacidad;
+	private Integer capacidad;
 
 	private Double peso;
 
 	public Tipo() {
 	}
 
-	public Tipo(Long modelo, String capacidad, Double peso) {
+	public Tipo(String modelo, Integer capacidad, Double peso) {
 		this.modelo = modelo;
 		this.capacidad = capacidad;
 		this.peso = peso;
 	}
 
-	public Long getModelo() {
+	public String getModelo() {
 		return modelo;
 	}
 
-	public void setModelo(Long modelo) {
+	public void setModelo(String modelo) {
 		this.modelo = modelo;
 	}
 
-	public String getCapacidad() {
+	public Integer getCapacidad() {
 		return capacidad;
 	}
 
-	public void setCapacidad(String capacidad) {
+	public void setCapacidad(Integer capacidad) {
 		this.capacidad = capacidad;
 	}
 

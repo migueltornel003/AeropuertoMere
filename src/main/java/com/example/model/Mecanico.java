@@ -1,8 +1,10 @@
 package com.example.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "mecanicos")
 public class Mecanico extends Persona{
 	private Double salario;
 

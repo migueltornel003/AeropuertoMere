@@ -6,6 +6,7 @@ import org.hibernate.annotations.NaturalId;
 import java.time.LocalDate;
 
 @Entity
+@Table(name = "aviones")
 public class Avion {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

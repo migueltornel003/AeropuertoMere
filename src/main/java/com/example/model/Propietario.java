@@ -1,28 +1,33 @@
 package com.example.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "propietarios")
 public class Propietario extends Persona{
-	private String Telf;
+	private String telf;
 
 	public Propietario(){
 	}
 
 	public Propietario(Long nss, String nombre, String direccion, String telf) {
 		super(nss, nombre, direccion);
-		Telf = telf;
+		telf = telf;
 	}
 
 	public String getTelf() {
-		return Telf;
+		return telf;
 	}
 
 	public void setTelf(String telf) {
-		Telf = telf;
+		telf = telf;
 	}
 
 	@Override
 	public String toString() {
 		return "Propietario{" +
-				"Telf='" + Telf + '\'' +
+				"Telf='" + telf + '\'' +
 				'}';
 	}
 
