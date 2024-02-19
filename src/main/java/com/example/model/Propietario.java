@@ -1,12 +1,19 @@
 package com.example.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "propietarios")
 public class Propietario extends Persona{
 	private String telf;
+
+	@ManyToMany(mappedBy = "propietarios")
+	private Set<Avion> aviones = new HashSet<>();
 
 	public Propietario(){
 	}

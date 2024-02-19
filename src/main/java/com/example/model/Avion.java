@@ -37,6 +37,12 @@ public class Avion {
 			inverseJoinColumns = @JoinColumn(name = "mecanico_nss"))
 	private Set<Mecanico> mecanicos = new HashSet<>();
 
+	@ManyToMany
+	@JoinTable(name = "compra",
+			joinColumns = @JoinColumn(name = "avion_n_registro"),
+			inverseJoinColumns = @JoinColumn(name = "propietario_nss"))
+	private Set<Propietario> propietarios = new HashSet<>();
+
 	public Avion(){
 	}
 
