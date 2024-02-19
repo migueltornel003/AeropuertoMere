@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.NaturalId;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "aviones")
@@ -28,6 +30,12 @@ public class Avion {
 	@ManyToOne
 	@JoinColumn(name = "tipo_modelo",nullable = false)
 	private Tipo tipo;
+
+	@ManyToMany
+	@JoinTable(name = "mantiene",
+			joinColumns = @JoinColumn(name = "avion_n_registro"),
+			inverseJoinColumns = @JoinColumn(name = "mecanico_nss"))
+	private Set<Mecanico> mecanicos = new HashSet<>();
 
 	public Avion(){
 	}
@@ -87,6 +95,14 @@ public class Avion {
 
 	public void setTipo(Tipo tipo) {
 		this.tipo = tipo;
+	}
+
+	public Set<Mecanico> getMecanicos() {
+		return mecanicos;
+	}
+
+	public void setMecanicos(Set<Mecanico> mecanicos) {
+		this.mecanicos = mecanicos;
 	}
 
 	@Override
