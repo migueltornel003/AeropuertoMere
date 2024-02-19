@@ -1,9 +1,9 @@
 package com.example.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import org.hibernate.annotations.NaturalId;
+
+import java.util.Set;
 
 @Entity
 @Table(name = "pilotos")
@@ -11,6 +11,9 @@ public class Piloto extends Persona{
 	@NaturalId
 	@Column(name = "n_lic")
 	private Integer nLic;
+
+	@ManyToMany(mappedBy = "pilotos")
+	private Set<Tipo> tipos;
 
 	public Piloto() {
 	}

@@ -2,6 +2,7 @@ package com.example.model;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -16,6 +17,13 @@ public class Tipo {
 
 	@OneToMany(mappedBy = "tipo")
 	private Set<Avion> aviones;
+
+	@ManyToMany
+	@JoinTable(name = "pilota",
+			joinColumns = @JoinColumn(name = "tipo_modelo"),
+			inverseJoinColumns = @JoinColumn(name = "piloto_nss"))
+	private Set<Piloto> pilotos = new HashSet<>();
+
 
 	public Tipo() {
 	}
