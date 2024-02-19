@@ -22,18 +22,23 @@ public class Avion {
 	private LocalDate fechaConstruccion;
 
 	@ManyToOne
-	@JoinColumn(name = "hangar_cod")
+	@JoinColumn(name = "hangar_cod",nullable = false)
 	private Hangar hangar;
+
+	@ManyToOne
+	@JoinColumn(name = "tipo_modelo",nullable = false)
+	private Tipo tipo;
 
 	public Avion(){
 	}
 
-	public Avion(Long nRegistro, String matricula, LocalDate fechaReg, LocalDate fechaConstruccion,Hangar hangar) {
+	public Avion(Long nRegistro, String matricula, LocalDate fechaReg, LocalDate fechaConstruccion,Hangar hangar,Tipo tipo) {
 		this.nRegistro = nRegistro;
 		this.matricula = matricula;
 		this.fechaReg = fechaReg;
 		this.fechaConstruccion = fechaConstruccion;
 		this.hangar = hangar;
+		this.tipo = tipo;
 	}
 
 	public Long getnRegistro() {
@@ -76,6 +81,14 @@ public class Avion {
 		this.hangar = hangar;
 	}
 
+	public Tipo getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(Tipo tipo) {
+		this.tipo = tipo;
+	}
+
 	@Override
 	public String toString() {
 		return "Avion{" +
@@ -83,6 +96,8 @@ public class Avion {
 				", matricula='" + matricula + '\'' +
 				", fechaReg=" + fechaReg +
 				", fechaConstruccion=" + fechaConstruccion +
+				", hangar=" + hangar +
+				", tipo=" + tipo +
 				'}';
 	}
 }

@@ -2,6 +2,8 @@ package com.example.model;
 
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
 @Table(name = "tipos")
 public class Tipo {
@@ -11,6 +13,9 @@ public class Tipo {
 	private Integer capacidad;
 
 	private Double peso;
+
+	@OneToMany(mappedBy = "tipo")
+	private Set<Avion> aviones;
 
 	public Tipo() {
 	}
@@ -43,6 +48,14 @@ public class Tipo {
 
 	public void setPeso(Double peso) {
 		this.peso = peso;
+	}
+
+	public Set<Avion> getAviones() {
+		return aviones;
+	}
+
+	public void setAviones(Set<Avion> aviones) {
+		this.aviones = aviones;
 	}
 
 	@Override
