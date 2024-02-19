@@ -21,14 +21,19 @@ public class Avion {
 	@Column(name = "fecha_construccion")
 	private LocalDate fechaConstruccion;
 
+	@ManyToOne
+	@JoinColumn(name = "hangar_cod")
+	private Hangar hangar;
+
 	public Avion(){
 	}
 
-	public Avion(Long nRegistro, String matricula, LocalDate fechaReg, LocalDate fechaConstruccion) {
+	public Avion(Long nRegistro, String matricula, LocalDate fechaReg, LocalDate fechaConstruccion,Hangar hangar) {
 		this.nRegistro = nRegistro;
 		this.matricula = matricula;
 		this.fechaReg = fechaReg;
 		this.fechaConstruccion = fechaConstruccion;
+		this.hangar = hangar;
 	}
 
 	public Long getnRegistro() {
@@ -61,6 +66,14 @@ public class Avion {
 
 	public void setFechaConstruccion(LocalDate fechaConstruccion) {
 		this.fechaConstruccion = fechaConstruccion;
+	}
+
+	public Hangar getHangar() {
+		return hangar;
+	}
+
+	public void setHangar(Hangar hangar) {
+		this.hangar = hangar;
 	}
 
 	@Override

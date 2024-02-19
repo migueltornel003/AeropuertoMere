@@ -2,17 +2,22 @@ package com.example.model;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Table(name = "hangares")
 public class Hangar {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "cod_hangar")
 	private Long codHangar;
 
 	private Integer capacidad;
 
 	private String localizacion;
+
+	@OneToMany(mappedBy = "hangar")
+	private Set<Avion> aviones = new HashSet<>();
 
 	public Hangar() {
 	}
@@ -45,6 +50,14 @@ public class Hangar {
 
 	public void setLocalizacion(String localizacion) {
 		this.localizacion = localizacion;
+	}
+
+	public Set<Avion> getAviones() {
+		return aviones;
+	}
+
+	public void setAviones(Set<Avion> aviones) {
+		this.aviones = aviones;
 	}
 
 	@Override
