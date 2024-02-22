@@ -6,27 +6,31 @@ import jakarta.persistence.*;
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "personas")
 public class Persona {
-	@Id
-	private Long nss;
 
+	@Id
+	@Column(name = "nss")
+	private String nss;
+
+	@Column(name = "nombre")
 	private String nombre;
 
+	@Column(name = "direccion")
 	private String direccion;
 
 	public Persona() {
 	}
 
-	public Persona(Long nss, String nombre, String direccion) {
+	public Persona(String nss, String nombre, String direccion) {
 		this.nss = nss;
 		this.nombre = nombre;
 		this.direccion = direccion;
 	}
 
-	public Long getNss() {
+	public String getNss() {
 		return nss;
 	}
 
-	public void setNss(Long nss) {
+	public void setNss(String nss) {
 		this.nss = nss;
 	}
 
@@ -49,7 +53,7 @@ public class Persona {
 	@Override
 	public String toString() {
 		return "Persona{" +
-				"Nss=" + nss +
+				"nss='" + nss + '\'' +
 				", nombre='" + nombre + '\'' +
 				", direccion='" + direccion + '\'' +
 				'}';

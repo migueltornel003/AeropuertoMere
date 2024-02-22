@@ -9,21 +9,20 @@ import java.util.Set;
 @Table(name = "tipos")
 public class Tipo {
 	@Id
+	@Column(name = "modelo")
 	private String modelo;
 
+	@Column(name = "capacidad")
 	private Integer capacidad;
 
+	@Column(name = "peso")
 	private Double peso;
 
 	@OneToMany(mappedBy = "tipo")
 	private Set<Avion> aviones;
 
-	@ManyToMany
-	@JoinTable(name = "pilota",
-			joinColumns = @JoinColumn(name = "tipo_modelo"),
-			inverseJoinColumns = @JoinColumn(name = "piloto_nss"))
+	@ManyToMany(mappedBy = "tipos")
 	private Set<Piloto> pilotos = new HashSet<>();
-
 
 	public Tipo() {
 	}
@@ -58,19 +57,11 @@ public class Tipo {
 		this.peso = peso;
 	}
 
-	public Set<Avion> getAviones() {
-		return aviones;
-	}
-
-	public void setAviones(Set<Avion> aviones) {
-		this.aviones = aviones;
-	}
-
 	@Override
 	public String toString() {
 		return "Tipo{" +
-				"modelo=" + modelo +
-				", capacidad='" + capacidad + '\'' +
+				"modelo='" + modelo + '\'' +
+				", capacidad=" + capacidad +
 				", peso=" + peso +
 				'}';
 	}

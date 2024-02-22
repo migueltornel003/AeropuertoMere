@@ -11,10 +11,11 @@ import java.util.Set;
 @Table(name = "aviones")
 public class Avion {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "n_registro")
-	private Long nRegistro;
+	private String nRegistro;
+
 	@NaturalId
+	@Column(name = "matricula")
 	private String matricula;
 
 	@Column(name = "fecha_reg")
@@ -24,29 +25,33 @@ public class Avion {
 	private LocalDate fechaConstruccion;
 
 	@ManyToOne
-	@JoinColumn(name = "hangar_cod",nullable = false)
+	@JoinColumn(name = "hangar_cod", nullable = false)
 	private Hangar hangar;
 
 	@ManyToOne
-	@JoinColumn(name = "tipo_modelo",nullable = false)
+	@JoinColumn(name = "tipo_modelo", nullable = false)
 	private Tipo tipo;
 
 	@ManyToMany
-	@JoinTable(name = "mantiene",
+	@JoinTable(
+			name = "mantiene",
 			joinColumns = @JoinColumn(name = "avion_n_registro"),
-			inverseJoinColumns = @JoinColumn(name = "mecanico_nss"))
+			inverseJoinColumns = @JoinColumn(name = "mecanico_nss")
+	)
 	private Set<Mecanico> mecanicos = new HashSet<>();
 
 	@ManyToMany
-	@JoinTable(name = "compra",
+	@JoinTable(
+			name = "compra",
 			joinColumns = @JoinColumn(name = "avion_n_registro"),
-			inverseJoinColumns = @JoinColumn(name = "propietario_nss"))
+			inverseJoinColumns = @JoinColumn(name = "propietario_nss")
+	)
 	private Set<Propietario> propietarios = new HashSet<>();
 
-	public Avion(){
+	public Avion() {
 	}
 
-	public Avion(Long nRegistro, String matricula, LocalDate fechaReg, LocalDate fechaConstruccion,Hangar hangar,Tipo tipo) {
+	public Avion(String nRegistro, String matricula, LocalDate fechaReg, LocalDate fechaConstruccion, Hangar hangar, Tipo tipo) {
 		this.nRegistro = nRegistro;
 		this.matricula = matricula;
 		this.fechaReg = fechaReg;
@@ -55,11 +60,11 @@ public class Avion {
 		this.tipo = tipo;
 	}
 
-	public Long getnRegistro() {
+	public String getnRegistro() {
 		return nRegistro;
 	}
 
-	public void setnRegistro(Long nRegistro) {
+	public void setnRegistro(String nRegistro) {
 		this.nRegistro = nRegistro;
 	}
 
@@ -103,18 +108,10 @@ public class Avion {
 		this.tipo = tipo;
 	}
 
-	public Set<Mecanico> getMecanicos() {
-		return mecanicos;
-	}
-
-	public void setMecanicos(Set<Mecanico> mecanicos) {
-		this.mecanicos = mecanicos;
-	}
-
 	@Override
 	public String toString() {
 		return "Avion{" +
-				"nRegistro=" + nRegistro +
+				"nRegistro='" + nRegistro + '\'' +
 				", matricula='" + matricula + '\'' +
 				", fechaReg=" + fechaReg +
 				", fechaConstruccion=" + fechaConstruccion +

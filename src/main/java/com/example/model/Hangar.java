@@ -10,10 +10,12 @@ import java.util.Set;
 public class Hangar {
 	@Id
 	@Column(name = "cod_hangar")
-	private Long codHangar;
+	private String codHangar;
 
+	@Column(name = "capacidad")
 	private Integer capacidad;
 
+	@Column(name = "localizacion")
 	private String localizacion;
 
 	@OneToMany(mappedBy = "hangar")
@@ -22,17 +24,17 @@ public class Hangar {
 	public Hangar() {
 	}
 
-	public Hangar(Long codHangar, Integer capacidad, String localizacion) {
+	public Hangar(String codHangar, Integer capacidad, String localizacion) {
 		this.codHangar = codHangar;
 		this.capacidad = capacidad;
 		this.localizacion = localizacion;
 	}
 
-	public Long getCodHangar() {
+	public String getCodHangar() {
 		return codHangar;
 	}
 
-	public void setCodHangar(Long codHangar) {
+	public void setCodHangar(String codHangar) {
 		this.codHangar = codHangar;
 	}
 
@@ -60,12 +62,10 @@ public class Hangar {
 		this.aviones = aviones;
 	}
 
-
-
 	@Override
 	public String toString() {
 		return "Hangar{" +
-				"codHangar=" + codHangar +
+				"codHangar='" + codHangar + '\'' +
 				", capacidad=" + capacidad +
 				", localizacion='" + localizacion + '\'' +
 				'}';

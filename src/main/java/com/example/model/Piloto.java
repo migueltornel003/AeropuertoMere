@@ -3,38 +3,51 @@ package com.example.model;
 import jakarta.persistence.*;
 import org.hibernate.annotations.NaturalId;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "pilotos")
 public class Piloto extends Persona{
-	@NaturalId
-	@Column(name = "n_lic")
-	private Integer nLic;
+	@Column(name = "licencia")
+	private String licencia;
 
-	@ManyToMany(mappedBy = "pilotos")
-	private Set<Tipo> tipos;
+	@ManyToMany
+	@JoinTable(
+			name = "pilota",
+			joinColumns = @JoinColumn(name = "piloto_nss"),
+			inverseJoinColumns = @JoinColumn(name = "tipo_modelo")
+	)
+	private Set<Tipo> tipos = new HashSet<>();
 
 	public Piloto() {
 	}
 
-	public Piloto(Long nss, String nombre, String direccion, Integer n_lic) {
+	public Piloto(String nss, String nombre, String direccion, String licencia) {
 		super(nss, nombre, direccion);
-		this.nLic = n_lic;
+		this.licencia = licencia;
 	}
 
-	public Integer getN_lic() {
-		return nLic;
+	public String getLicencia() {
+		return licencia;
 	}
 
-	public void setN_lic(Integer n_lic) {
-		this.nLic = n_lic;
+	public void setLicencia(String licencia) {
+		this.licencia = licencia;
+	}
+
+	public Set<Tipo> getTipos() {
+		return tipos;
+	}
+
+	public void setTipos(Set<Tipo> tipos) {
+		this.tipos = tipos;
 	}
 
 	@Override
 	public String toString() {
 		return "Piloto{" +
-				"n_lic=" + nLic +
+				"licencia='" + licencia + '\'' +
 				'}';
 	}
 }

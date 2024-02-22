@@ -1,5 +1,6 @@
 package com.example.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
@@ -10,31 +11,32 @@ import java.util.Set;
 @Entity
 @Table(name = "propietarios")
 public class Propietario extends Persona{
-	private String telf;
+	@Column(name = "telefono")
+	private String telefono;
 
 	@ManyToMany(mappedBy = "propietarios")
 	private Set<Avion> aviones = new HashSet<>();
 
-	public Propietario(){
+	public Propietario() {
 	}
 
-	public Propietario(Long nss, String nombre, String direccion, String telf) {
+	public Propietario(String nss, String nombre, String direccion, String telefono) {
 		super(nss, nombre, direccion);
-		telf = telf;
+		this.telefono = telefono;
 	}
 
-	public String getTelf() {
-		return telf;
+	public String getTelefono() {
+		return telefono;
 	}
 
-	public void setTelf(String telf) {
-		telf = telf;
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
 	}
 
 	@Override
 	public String toString() {
 		return "Propietario{" +
-				"Telf='" + telf + '\'' +
+				"telefono='" + telefono + '\'' +
 				'}';
 	}
 
